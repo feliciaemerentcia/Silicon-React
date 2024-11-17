@@ -1,23 +1,24 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './assets/main.css'
 import Header from './components/Header'
 import Footer from './components/Footer'
-import Hero from './components/Hero'
-import Brands from './components/Brands'
-import AppFeatures from './components/AppFeatures'
-
+import Home from './Pages/Home'
+import ContactPage from './Pages/ContactPage'
+import FormValidationProvider from './context/FormValidationContext'
 
 function App() {
 
   return (
-    <>
-    <Header/>
-    <main>
-      <Hero/>
-      <Brands/>
-      <AppFeatures/>
-    </main>
-    <Footer/>
-    </>
+      <BrowserRouter>
+        <Header/>
+        <main>
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/ContactPage' element={<ContactPage />} />
+          </Routes>
+        </main>
+        <Footer/>   
+      </BrowserRouter>
   )
 }
 

@@ -15,7 +15,7 @@ const AppFeatures = () => {
     <section id="app-features">
         <div className="container">
             <div className="img-container">
-                <img src="/Images/iphone-features.svg" alt=""/>
+                <img src="./Images/AppFeatures/iphone-features.svg" alt=""/>
             </div>
             <div className="text-container">
                 <div className="headline">
@@ -25,7 +25,7 @@ const AppFeatures = () => {
                 <div className="feature-grid">
                     {
                         features.map((featureItem, index) => (<Feature key={index} feature={featureItem} />))
-                    }
+                    } 
                 </div>
             </div>
         </div>

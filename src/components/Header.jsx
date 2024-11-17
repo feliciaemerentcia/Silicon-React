@@ -1,37 +1,45 @@
-import React from 'react'
+import React, { useState } from 'react'
 import logoType from '../assets/Images/Silicon-logotype.svg'
+import {Link, NavLink } from 'react-router-dom'
+import DarkModeSwitch from './DarkModeSwitch'
 
 const Header = () => {
+
+const [menuOpen, setMenuOpen] = useState(false);
+
+const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+};
+
   return (
     <header>
-        <div className="container">
-            <div className="logo">
-                <a href="index.html"><img src={logoType} alt="Silicon Logotype"/></a>
-                <p>Silicon</p>
-            </div>
+            <nav className="navbar container">
+                <Link className="logo" to="/">
+                    <img src={logoType} alt="Silicon Logotype"/>
+                    <p>Silicon</p>
+                </Link>
 
-            <nav className="navbar">
-                <a className="nav-link" href="index.html">Features</a>
-                <a className="nav-link" href="contact.html">Contact</a>
+                <button className="btn-mobile-menu" onClick={toggleMenu}>
+                    <i className={menuOpen ? "fa-light fa-times" :"fa-light fa-bars"}></i>
+                </button>
+                <ul className={`main-menu ${menuOpen ? 'open' : ''}`}>
+                    <li>
+                        <NavLink className="nav-link" to="/" onClick={() => setMenuOpen(false)}>Features</NavLink>
+                    </li>
+                    <li>
+                        <NavLink className="nav-link" to="/contactPage"onClick={() => setMenuOpen(false)}>Contact</NavLink>
+                    </li>
+                </ul>
+
+                <div className='darkmode'>
+                    <DarkModeSwitch />
+                </div>
+
+                <a id="signin" href="#" className="btn-primary">
+                    <i className="fa-regular fa-user"></i>
+                    <span>Sign in / up</span>
+                </a>
             </nav>
-
-            <div className="darkmode-switch">
-                <span className="label">Dark Mode</span>
-                <label className="toggle-switch">
-                    <input id="darkmode-switch" type="checkbox"/>
-                    <span className="slider"></span>
-                </label>
-            </div>
-
-            <a id="signin" href="#" className="btn-primary">
-                <i className="fa-regular fa-user"></i>
-                <span>Sign in / up</span>
-            </a>
-
-            <button className="btn-mobile-menu">
-                <i className="fa-light fa-bars"></i>
-            </button>
-        </div>
     </header>
   )
 }
